@@ -1,7 +1,7 @@
 import { UIState } from ".";
 
-type UIActionType = { type: "UI - Open Sidebar", payload: string } | { type: "UI - Close Sidebar", payload: string }
-export const uiReducer = (state: UIState, action: any): UIState => {
+type UIActionType = { type: "UI - Open Sidebar" } | { type: "UI - Close Sidebar" }
+export const uiReducer = (state: UIState, action: UIActionType): UIState => {
 
     switch (action.type) {
         case "UI - Open Sidebar":
