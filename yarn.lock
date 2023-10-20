@@ -347,6 +347,11 @@
   "resolved" "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.3.tgz"
   "version" "0.16.3"
 
+"@types/uuid@^9.0.6":
+  "integrity" "sha512-BT2Krtx4xaO6iwzwMFUYvWBWkV2pr37zD68Vmp1CDV196MzczBRxuEpD6Pr395HAgebC/co7hOphs53r8V7jew=="
+  "resolved" "https://registry.npmjs.org/@types/uuid/-/uuid-9.0.6.tgz"
+  "version" "9.0.6"
+
 "ansi-styles@^3.2.1":
   "integrity" "sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA=="
   "resolved" "https://registry.npmjs.org/ansi-styles/-/ansi-styles-3.2.1.tgz"

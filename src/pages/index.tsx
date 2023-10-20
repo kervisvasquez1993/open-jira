@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, Grid, Typography } from '@mui/material'
 import { NextPage } from 'next'
 import React from 'react'
 import { Layout } from '../../components/layouts'
+import EntryList from '../../components/ui/EntryList'
 
 const HomePage: NextPage = () => {
   return (
@@ -11,7 +12,7 @@ const HomePage: NextPage = () => {
           <Card sx={{height: "calc(100vw - 100px)"}}>
             <CardHeader title="Pendientes" ></CardHeader>
             <CardContent >
-             
+                <EntryList/>
             </CardContent>
           </Card>
         </Grid>
