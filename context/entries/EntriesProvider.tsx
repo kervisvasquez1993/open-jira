@@ -13,26 +13,26 @@ const Entrices_INITIAL_STATE: EntriesState = {
     entries: [
         {
             _id: uuidv4(),
-            description: "lorem ipsum dolor sit amet",
-            status: 'Pending',
+            description: "Tarea pendiente",
+            status: 'pending',
             createAt: Date.now()
         },
         {
             _id: uuidv4(),
-            description: "lorem ipsum dolor sit amet",
+            description: "Tarea en progeso1",
             status: 'in-progress',
             createAt: Date.now() - 1000000
         },
         {
             _id: uuidv4(),
-            description: "lorem ipsum dolor sit amet",
+            description: "tarea finalizada",
             status: 'finished',
             createAt: Date.now() - 10000
         },
         {
             _id: uuidv4(),
-            description: "lorem ipsum dolor sit amet",
-            status: 'Pending',
+            description: "tarea pendiente",
+            status: 'pending',
             createAt: Date.now()
         },
     ]

@@ -1,20 +1,26 @@
 import { List, Paper } from '@mui/material'
-import React from 'react'
+import React, { FC, useContext } from 'react'
 import EntryCard from './EntryCard'
-
-const EntryList = () => {
+import { EntryStatus, Entry } from '../../interfaces/entries';
+import { EntriesContext } from '../../context/entries'
+interface Props {
+    status: EntryStatus
+}
+const EntryList: FC<Props> = ({ status }) => {
+    console.log(status)
+    const { entries } = useContext(EntriesContext)
+    const entriesByStatus = entries.filter(entry => entry.status === status)
+    console.log(entriesByStatus, "entriesByStatus")
     return (
         <div>
-            <Paper sx={{ height: 'calc(100vh - 250px)', overflow: 'scroll', backgroundColor: 'transparent', padding: '5px 10px' }}>
+            <Paper sx={{ height: 'calc(100vh - 180px)', overflow: 'scroll', backgroundColor: 'transparent', padding: '5px 10px' }}>
                 <List sx={{ opacity: 1 }}>
-                    <EntryCard />
-                    <EntryCard />
-                    <EntryCard />
-                    <EntryCard />
+                    {
+                        entriesByStatus.map(entry => <EntryCard key={entry._id} entry={entry} />)
+                    }
                 </List>
             </Paper>
         </div>
     )
 }
-
 export default EntryList

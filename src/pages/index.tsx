@@ -9,21 +9,27 @@ const HomePage: NextPage = () => {
     <Layout title='homa page'>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4}>
-          <Card sx={{height: "calc(100vw - 100px)"}}>
+          <Card sx={{ height: "calc(100vw - 100px)" }}>
             <CardHeader title="Pendientes" ></CardHeader>
             <CardContent >
-                <EntryList/>
+              <EntryList status='pending' />
             </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Card sx={{height: "calc(100vw - 100px)"}}>
+          <Card sx={{ height: "calc(100vw - 100px)" }}>
             <CardHeader title="En Progreso" ></CardHeader>
+            <CardContent >
+              <EntryList status='in-progress' />
+            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Card sx={{height: "calc(100vw - 100px)"}}>
+          <Card sx={{ height: "calc(100vw - 100px)" }}>
             <CardHeader title="Completado" ></CardHeader>
+            <CardContent >
+              <EntryList status='finished' />
+            </CardContent>
           </Card>
         </Grid>
       </Grid>
