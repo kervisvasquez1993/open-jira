@@ -3,6 +3,8 @@ import { NextPage } from 'next'
 import React from 'react'
 import { Layout } from '../../components/layouts'
 import EntryList from '../../components/ui/EntryList'
+import { NewEntry } from '../../components/ui'
+
 
 const HomePage: NextPage = () => {
   return (
@@ -11,25 +13,24 @@ const HomePage: NextPage = () => {
         <Grid item xs={12} sm={4}>
           <Card sx={{ height: "calc(100vw - 100px)" }}>
             <CardHeader title="Pendientes" ></CardHeader>
-            <CardContent >
+            <NewEntry/>
               <EntryList status='pending' />
-            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} sm={4}>
           <Card sx={{ height: "calc(100vw - 100px)" }}>
             <CardHeader title="En Progreso" ></CardHeader>
-            <CardContent >
+           
               <EntryList status='in-progress' />
-            </CardContent>
+           
           </Card>
         </Grid>
         <Grid item xs={12} sm={4}>
           <Card sx={{ height: "calc(100vw - 100px)" }}>
             <CardHeader title="Completado" ></CardHeader>
-            <CardContent >
+           
               <EntryList status='finished' />
-            </CardContent>
+           
           </Card>
         </Grid>
       </Grid>
