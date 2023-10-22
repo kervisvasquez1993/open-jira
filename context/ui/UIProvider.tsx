@@ -8,10 +8,12 @@ interface UIProviderProps {
 export interface UIState {
     sidemenuOpen: boolean;
     isAddingEntry: boolean
+    isDragging: boolean
 }
 const UI_INITIAL_STATE: UIState = {
     sidemenuOpen: true,
-    isAddingEntry: false
+    isAddingEntry: false,
+    isDragging: false
 };
 
 
@@ -30,7 +32,15 @@ export const UIProvider: FC<UIProviderProps> = ({ children }) => {
         console.log("llamndo close")
         dispath({ type: "UI - Close Sidebar" })
     }
-    return (<UIContext.Provider value={{ ...state, openSideMenu, closeSideMenu, setIsAddingEntry }}>
+
+    const startDragging = () => {
+        dispath({type : "UI - Start Dragging"})
+    }
+
+    const endDragging = () => {
+        dispath({type : "UI - End Dragging"})
+    }
+    return (<UIContext.Provider value={{ ...state, openSideMenu, closeSideMenu, setIsAddingEntry, endDragging, startDragging }}>
         {children}
     </UIContext.Provider>)
 } 

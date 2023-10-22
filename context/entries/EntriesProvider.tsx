@@ -40,6 +40,7 @@ const Entrices_INITIAL_STATE: EntriesState = {
 }
 export const EntriesProvider: FC<UIProviderProps> = ({ children }) => {
     const [state, dispatch] = useReducer(entriesReducer, Entrices_INITIAL_STATE)
+
     const addNewEntry = (description: string) => {
 
 
@@ -52,10 +53,15 @@ export const EntriesProvider: FC<UIProviderProps> = ({ children }) => {
 
         dispatch({ type: '[Entry] Add-Entry', payload: NewEntry })
     }
+
+    const entryUpdated = (entry: Entry) => {
+        dispatch({ type: "[Entry] Entry-Updated", payload: entry })
+    }
     return (
         <EntriesContext.Provider value={{
             ...state,
-            addNewEntry
+            addNewEntry,
+            entryUpdated
         }}>{children}</EntriesContext.Provider>
     )
 }

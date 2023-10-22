@@ -1,23 +1,30 @@
 import { Card, CardActionArea, CardActions, CardContent, Typography } from '@mui/material';
-import React, { DragEvent, FC } from 'react'
+import React, { DragEvent, FC, useContext } from 'react'
 import { Entry, EntryStatus } from '../../interfaces/entries';
+import { UIContext } from '../../context/ui';
 
 interface Props {
     entry : Entry
 }
 
 const EntryCard:FC<Props> = ({entry}) => {
+    const {startDragging, endDragging} = useContext(UIContext)
+
     const onDragStart = (event:DragEvent) => {
             //TODO: modificar el estado para saber cual estoy haciendo drag
             event.dataTransfer.setData('text', entry._id)
+            startDragging()
     }
 
-    const onDragEnd = (event:DragEvent) => {}
+    const onDragEnd = (event:DragEvent) => {
+        endDragging()
+    }
     return (
         <Card sx={{ marginBottom: 1 }}
         
             draggable={true}
             onDragStart={onDragStart}
+            onDragEnd={onDragEnd}
         >
 
             <CardActionArea>
