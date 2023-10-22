@@ -7,8 +7,8 @@ import { EntriesContext } from '../../context/entries';
 import { UIContext } from '../../context/ui';
 
 export const NewEntry = () => {
-    const {addNewEntry} = useContext(EntriesContext)
-    const {setIsAddingEntry, isAddingEntry} = useContext(UIContext)
+    const { addNewEntry } = useContext(EntriesContext)
+    const { setIsAddingEntry, isAddingEntry } = useContext(UIContext)
     // const [isAdding, setIsAdding] = useState(false);
     const [inputValue, setInputValue] = useState('')
     const [touched, setTouched] = useState(false);
@@ -17,8 +17,7 @@ export const NewEntry = () => {
     }
 
     const onSave = () => {
-        if(inputValue.length === 0) return
-
+        if (inputValue.length === 0) return
         console.log(inputValue)
         addNewEntry(inputValue)
         setIsAddingEntry(false)
@@ -26,7 +25,7 @@ export const NewEntry = () => {
         setInputValue("")
     }
 
-    
+
     return (
         <Box sx={{ marginBottom: 2, paddingX: 1 }}>
 
