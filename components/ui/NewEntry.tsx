@@ -4,21 +4,24 @@ import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import { Box, Button, TextField } from '@mui/material'
 import { EntriesContext } from '../../context/entries';
+import { UIContext } from '../../context/ui';
 
 export const NewEntry = () => {
     const {addNewEntry} = useContext(EntriesContext)
-    const [isAdding, setIsAdding] = useState(false);
+    const {setIsAddingEntry, isAddingEntry} = useContext(UIContext)
+    // const [isAdding, setIsAdding] = useState(false);
     const [inputValue, setInputValue] = useState('')
     const [touched, setTouched] = useState(false);
     const onTextChange = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value)
     }
+
     const onSave = () => {
         if(inputValue.length === 0) return
 
         console.log(inputValue)
         addNewEntry(inputValue)
-        setIsAdding(false)
+        setIsAddingEntry(false)
         setTouched(touched)
         setInputValue("")
     }
@@ -27,7 +30,7 @@ export const NewEntry = () => {
     return (
         <Box sx={{ marginBottom: 2, paddingX: 1 }}>
 
-            {isAdding ? (<><TextField fullWidth
+            {isAddingEntry ? (<><TextField fullWidth
                 sx={{ marginTop: 2, marginBottom: 1 }}
                 placeholder='Nueva Entrada'
                 autoFocus
@@ -40,9 +43,9 @@ export const NewEntry = () => {
                 onBlur={() => setTouched(true)}
             />
                 <Box display='flex' justifyContent={'space-around'}>
-                    <Button onClick={() => setIsAdding(false)} variant='text'  >Cancelar</Button>
+                    <Button onClick={() => setIsAddingEntry(false)} variant='text'  >Cancelar</Button>
                     <Button variant='outlined' color='secondary' endIcon={<SaveOutlinedIcon />} onClick={onSave}>Save</Button>
-                </Box></>) : (<Button onClick={() => setIsAdding(true)} startIcon={<AddCircleOutlineOutlinedIcon />} fullWidth variant='outlined'>Agregar una nueva tarea</Button>)}
+                </Box></>) : (<Button onClick={() => setIsAddingEntry(true)} startIcon={<AddCircleOutlineOutlinedIcon />} fullWidth variant='outlined'>Agregar una nueva tarea</Button>)}
         </Box>
     )
 }

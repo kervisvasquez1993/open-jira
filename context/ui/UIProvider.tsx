@@ -7,14 +7,20 @@ interface UIProviderProps {
 
 export interface UIState {
     sidemenuOpen: boolean;
+    isAddingEntry: boolean
 }
 const UI_INITIAL_STATE: UIState = {
     sidemenuOpen: true,
+    isAddingEntry: false
 };
+
+
 
 export const UIProvider: FC<UIProviderProps> = ({ children }) => {
     const [state, dispath] = useReducer(uiReducer, UI_INITIAL_STATE)
-
+    const setIsAddingEntry = (isAdding: boolean) => {
+        dispath({ type: "UI - setIsAddingEntry", payload: isAdding })
+    }
     const openSideMenu = () => {
         console.log("llamndo open")
         dispath({ type: "UI - Open Sidebar" })
@@ -24,7 +30,7 @@ export const UIProvider: FC<UIProviderProps> = ({ children }) => {
         console.log("llamndo close")
         dispath({ type: "UI - Close Sidebar" })
     }
-    return (<UIContext.Provider value={{ ...state, openSideMenu, closeSideMenu }}>
+    return (<UIContext.Provider value={{ ...state, openSideMenu, closeSideMenu, setIsAddingEntry }}>
         {children}
     </UIContext.Provider>)
 } 
